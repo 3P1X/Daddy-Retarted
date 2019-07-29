@@ -176,6 +176,21 @@ public class Son implements Runnable{
         System.out.println("color window");
         if(items.getChildren().contains(spray.getImageView())){
             items.getChildren().remove(spray.getImageView());
+            try {
+                FileInputStream fis =
+                        new FileInputStream(System.getProperty("user.dir")+"/assets/"+"cross.png");
+                this.image = new Image(fis);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+            imageView = new ImageView(this.image);
+            imageView.setFitWidth(120);
+            imageView.setFitHeight(120);
+            imageView.setLayoutX(140);
+            imageView.setLayoutY(100);
+            Platform.runLater(()->{
+                Main.mapPane.getChildren().add(imageView);
+            });
             Main.window = false;
         }
     }
@@ -247,6 +262,8 @@ public class Son implements Runnable{
         imageView = new ImageView(this.image);
         imageView.setFitWidth(150);
         imageView.setFitHeight(150);
+        y+=40;
+        soldierPane.setLayoutY(y);
         Platform.runLater(()->{
             Main.mapPane.getChildren().add(getPane());
         });
