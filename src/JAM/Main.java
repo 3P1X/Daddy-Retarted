@@ -25,8 +25,6 @@ public class Main extends Application {
     private static final int HEIGHT = 700;
     private static final int WIDTH = 1400;
 
-//    private static Map map;
-//    private static Bozorgvar bozorgvar;
     private static Son son = new Son();
     private static Father father = new Father();
     private static Cooler cooler = new Cooler();
@@ -35,10 +33,12 @@ public class Main extends Application {
     private BorderPane dialogPane;
     private BorderPane playGroundPane;
     public static Pane mapPane;
+    public static Pane endPane;
 
     private Scene startScene;
     private Scene dialogScene;
     private Scene playGroundScene;
+    private Scene end;
 
     public static boolean window = true;
     public static boolean bathroom = true;
@@ -49,7 +49,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Daddy Retarded");
         createStart(primaryStage);
         createDialog(primaryStage);
         createPlay(primaryStage);
@@ -99,6 +99,17 @@ public class Main extends Application {
             stage.setScene(playGroundScene);
             (new Thread(son)).start();
             (new Thread(father)).start();
+            (new Thread(()->{
+                try {
+					Thread.sleep(500);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+                if(!tv && !window && !bathroom && !newspaper && !gas){
+                   stage.setScene(end);
+                }
+            })).start();
 
         });
         dialogPane.setCenter(dialog);
@@ -110,6 +121,8 @@ public class Main extends Application {
         mapPane = new Pane();
         playGroundScene = new Scene(playGroundPane, WIDTH, HEIGHT);
         keyBoardController(playGroundScene);
+        endPane = new Pane();
+        end = new Scene(endPane,WIDTH,HEIGHT);
 
 //        mapPane.getChildren().add(NewsPaper.getImage());
 
