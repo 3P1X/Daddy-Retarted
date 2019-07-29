@@ -108,13 +108,23 @@ public class Father implements Runnable{
         if(y==185){
             door1 = true;
             door2 = true;
+            if(y<300){
+                left=false;
+            }
+            if(y>950){
+                left=true;
+            }
         }else{
             door1 = false;
             door2 = false;
+            if(y<300){
+                left=false;
+            }
+            if(y>950){
+                left=true;
+            }
         }
-
         goNextFloor();
-
         if(x<=770 && x>= 710 && y==485){
           Main.getCooler().change();
           door1=true;
