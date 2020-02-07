@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "JAM.Main",
+            "projectName": "Daddy-Retarted_da5413e"
+        }
+    ]
+}
